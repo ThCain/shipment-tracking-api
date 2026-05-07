@@ -1,12 +1,12 @@
 # 🚚 Shipment Tracking API
 
-A RESTful backend service for managing and tracking shipment operations, built with **FastAPI** and **PostgreSQL**.
+A RESTful backend service for managing and tracking shipment operations, built with **FastAPI** and SQL database support (SQLite by default, PostgreSQL optional).
 
 ## 🛠 Tech Stack
 
 - **Python 3.11**
 - **FastAPI** – API framework
-- **PostgreSQL** – Relational database
+- **SQLite (default)** / **PostgreSQL (optional)** – Relational database
 - **SQLAlchemy** – ORM
 - **Alembic** – Database migrations
 - **Pydantic** – Data validation
@@ -46,7 +46,7 @@ shipment-tracking-api/
 
 ### Prerequisites
 - Python 3.11+
-- PostgreSQL
+- Node.js 18+ (for frontend)
 - Docker (optional)
 
 ### Installation
@@ -61,16 +61,27 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env with your PostgreSQL credentials
+# Default runs on SQLite (shipment.db)
+# Optional: set DATABASE_URL to your PostgreSQL DSN
 ```
 
-### Run the App
+### Run Backend
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
 Visit `http://localhost:8000/docs` for the interactive Swagger UI.
+
+### Run Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend is served on Vite's default URL (usually `http://localhost:5173`) and talks to backend at `http://localhost:8000`.
 
 ## 📡 API Endpoints
 
